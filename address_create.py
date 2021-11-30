@@ -216,27 +216,18 @@ def transaction_files(n, seed_num, faker_seed):
     random.seed(seed_num)
 
     df = addressDF(n, faker_seed)
-
     len_df = len(df)
 
     revenues = [round(random.uniform(1.00, 1000.00), 2) for i in range(len_df)]
-
     dates = generate_random_dates(2021, len_df, seed_num)
-
     orderNumbers = [random.randint(10000000,99999999) for i in range(len_df)]
-
     userIds = ['U' + str(random.randint(1000000,9999999)) for i in range(len_df)]
-
     firstTime = [random.randint(0, 1) for i in range(len_df)]
 
     df['revenue'] = revenues
-
     df['date'] = dates
-
     df['Order Number'] = orderNumbers
-
     df['User ID'] = userIds
-
     df['First Time Order'] = firstTime
 
     return df
@@ -254,15 +245,10 @@ def mail_files(n, seed_num, faker_seed):
         df.drop(df.tail(1).index,inplace=True)
 
     len_df = len(df)
-
     mail_split = int(len_df/2)
-
     mom_lst = ['MOM' + str(random.randint(1000000,9999999)) for i in range(mail_split)]
-
     dog_lst = ['DOG' + str(random.randint(1000000,9999999)) for i in range(mail_split)]
-
     mail_lst = mom_lst + dog_lst
-
     df['mailkey'] = mail_lst
 
     return df
